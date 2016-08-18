@@ -1,6 +1,7 @@
 <?php
 
 namespace Cube\DoctrineEntityFactory;
+use Cube\DoctrineEntityFactory\Exception\InvalidArgumentException;
 
 /**
  * Creates an entity directly - without passing any constructor arguments.
@@ -18,6 +19,10 @@ final class SimpleEntityFactory implements EntityFactoryInterface
      */
     public function get($entityClassName)
     {
+        if (!is_string($entityClassName) || !class_exists($entityClassName)) {
+            throw new InvalidArgumentException('Expected $entityClassName to be a valid class name.');
+        }
+
         return new $entityClassName();
     }
 }
