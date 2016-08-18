@@ -3,7 +3,7 @@
 This project provides an interface that can be used to allow the factory pattern for libraries that 
 want to support instantiating Doctrine entities that require constructor injection.
 
-[![Build Status](https://travis-ci.org/cube/doctrine-entity-factory.svg?branch=master)](https://travis-ci.org/cube/doctrine-entity-factory)
+[![Build Status](https://travis-ci.org/Cube-Solutions/doctrine-entity-factory.svg?branch=master)](https://travis-ci.org/Cube-Solutions/doctrine-entity-factory)
 [![Packagist](https://img.shields.io/packagist/v/cube/doctrine-entity-factory.svg)](https://packagist.org/packages/cube/doctrine-entity-factory)
 
 [![Author](http://img.shields.io/badge/author-@gabriel_somoza-blue.svg)](https://twitter.com/gabriel_somoza)
