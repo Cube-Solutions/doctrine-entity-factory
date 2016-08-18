@@ -1,6 +1,6 @@
 {
     "name": "cube/doctrine-entity-factory",
-    "description": "Provides an interface to use the factory patter for Doctrine entity instantiation",
+    "description": "Provides an interface to use the factory pattern for Doctrine entity construction",
     "type": "library",
     "license": "BSD-3-Clause",
     "authors": [
@@ -9,5 +9,7 @@
             "email": "gabriel.somoza@cu.be"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^5.6|^7.0"
+    }
 }
