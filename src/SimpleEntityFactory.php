@@ -1,6 +1,7 @@
 <?php
 
 namespace Cube\DoctrineEntityFactory;
+
 use Cube\DoctrineEntityFactory\Exception\InvalidArgumentException;
 
 /**
