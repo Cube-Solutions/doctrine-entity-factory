@@ -1,6 +1,6 @@
 https://opensource.org/licenses/BSD-3-Clause
 
-Copyright (c) 2016, FirstLink Networks BVBA, Belgium
+Copyright (c) 2016-2017, FirstLink Networks BVBA, Belgium
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
