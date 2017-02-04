@@ -2,6 +2,7 @@ Doctrine Entity Factory
 =======================
 
 [![Build Status](https://travis-ci.org/Cube-Solutions/doctrine-entity-factory.svg?branch=master)](https://travis-ci.org/Cube-Solutions/doctrine-entity-factory)
+[![Code Coverage](https://scrutinizer-ci.com/g/gsomoza/doctrine-entity-factory/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/gsomoza/doctrine-entity-factory/?branch=master)
 [![Packagist](https://img.shields.io/packagist/v/cube/doctrine-entity-factory.svg)](https://packagist.org/packages/cube/doctrine-entity-factory)
 [![Author](http://img.shields.io/badge/author-@gabriel_somoza-blue.svg)](https://twitter.com/gabriel_somoza)
 [![License](https://img.shields.io/packagist/l/cube/doctrine-entity-factory.svg)](https://github.com/cube/doctrine-entity-factory/blob/master/LICENSE)
