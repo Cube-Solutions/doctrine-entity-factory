@@ -14,3 +14,63 @@ want to support instantiating Doctrine entities that require constructor injecti
 ```
 composer require cube/doctrine-entity-factory
 ```
+
+## What Problem does this Solve?
+Let's say you have a class that, at some point, has to instantiate a new Doctrine entity. A good example is DoctrineResource from the zfcampus/zf-apigility-admin project, simplified below:
+
+```php
+class DoctrineResource 
+{
+  public function create($data)
+  {
+    $entityClass = $this->getEntityClass();
+    // ...
+    $entity = new $entityClass(); // notice this line
+    // ...
+    return $entity;
+  }
+}
+```
+
+The problem with the code above is that their users can't instantiate any entities that have required parameters in the constructor. They also can't use a named constructor to instantiate the object if they wanted to. There could be many reasons why they have required parameters in their entity's constructor, but since Doctrine is designed to allow that then so should you. Moreover, in the example above `DoctrineResource` is acting as the de-facto factory for the entities, which is one responsibility too many for that class.
+
+The solution is to decouple the instantiation of your user's Doctrine entities from your library. So we created an interface, `EntityFactoryInterface`, that can be used by any library that needs a new instance of a Doctrine entity, but wants to delegate the process of actually building that entity. Your updated class would look as follows:
+
+```php
+use Cube\DoctrineEntityFactory\EntityFactoryInterface;
+class DoctrineResource 
+{
+  /** 
+    * @var EntityFactoryInterface Set e.g. via DI, can default to SimpleEntityFactory
+    *                             to avoid BC breaks 
+    */
+  private $entityFactory; 
+  
+  public function create($data)
+  {
+    $entityClass = $this->getEntityClass();
+    // ...
+    $entity = $this->entityFactory->get($entityClass); 
+    // ...
+    return $entity;
+  }
+}
+```
+
+And now your class doesn't need to actually instantiate the Doctrine entity!
+
+## Yet Another Library (roll eyes)?
+Yes, because the use-case described above happens quite often actually around several Doctrine libraries. By providing a decentralized interface we can make all of these other libraries delegate instantiation to the same type of factory.
+
+This library also provides two simple implementations:
+
+* `SimpleEntityFactory`: the SOLID equivalent to doing `new $entityClass`
+* `BypassConstructorEntityFactory`: will build the entity using reflection to entirely bypass the constructor.
+
+Other implementations are possible, and the most common will probably be end-user factories that know how to instantiate their entities very well.
+
+## Is This Library for Me?
+This library is for you if you're distributing code that needs a new instance of a Doctrine entity, but you don't personally have (or want!) any knowledge or control over HOW that entity must be instantiated.
+
+## License
+See [LICENSE.md](https://github.com/Cube-Solutions/doctrine-entity-factory/blob/master/LICENSE.md)
